@@ -18,7 +18,7 @@ public class ParkingCalculator {
         }
         
         public void removeUser(User u) {
-            // if an existing user, update the likeyhood values for for the k locations for that user
+            // if an existing user, update the likelihood values for for the k locations for that user
             // remove the user for newUsers or ExistingUsers
         }
         
@@ -33,8 +33,7 @@ public class ParkingCalculator {
             for (User u : newUsers){
                 // get k closest spots
                 ArrayList<ParkingLocation> locations = recommendSpots(u);
-		
-                // get best three
+                
                 // update u
                 //push spots to the user 
             }
@@ -48,7 +47,6 @@ public class ParkingCalculator {
 		
 	}
 	
-        // get
 	private ArrayList<ParkingLocation> recommendSpots(User user){
 		
 		ArrayList<ParkingLocation> topThreeSpots = new ArrayList<ParkingLocation>();
@@ -98,9 +96,17 @@ public class ParkingCalculator {
 		
 		ArrayList<ParkingLocation> nearbySpots = new ArrayList<ParkingLocation>();
 		
-                
-		//calculate nearest neighbors
-		//this data could come from another team's API, e.g.
+		for (int i = 0; i < k; i++){
+			ParkingLocation nearbyLocation = new ParkingLocation(0, 0);
+			for (ParkingLocation p : locations){
+				if (calculateDistance(user.getLatitude(), user.getLongitude(), p.getLatitude(), p.getLongitude())
+						< calculateDistance(user.getLatitude(), user.getLongitude(), 
+								nearbyLocation.getLatitude(), nearbyLocation.getLongitude())){
+					nearbyLocation = p;
+				}
+			}
+			nearbySpots.add(nearbyLocation);
+		}
 		
 		return nearbySpots;
 	}
@@ -114,6 +120,10 @@ public class ParkingCalculator {
 	 * @return
 	 */
 	public static double calculateDistance(long lat1, long long1, long lat2, long long2){
+		
+		if (lat1 == 0 || lat2 == 0 || long1 == 0 || long2 == 0)
+			return Integer.MAX_VALUE;
+		
 		double dLat = Math.toRadians(lat2 - lat1);
 		double dLon = Math.toRadians(long2 - long1);
 		double rLat1 = Math.toRadians(lat1);
