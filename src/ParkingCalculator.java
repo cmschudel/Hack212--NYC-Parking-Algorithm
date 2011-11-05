@@ -39,8 +39,7 @@ public class ParkingCalculator {
             for (User u : newUsers){
                 // get k closest spots
                 ArrayList<ParkingLocation> locations = recommendSpots(u);
-		
-                // get best three
+                
                 // update u
                 //push spots to the user 
             }
@@ -54,21 +53,32 @@ public class ParkingCalculator {
 		
 	}
 	
-        // get
 	private ArrayList<ParkingLocation> recommendSpots(User user){
 		
 		ArrayList<ParkingLocation> topThreeSpots = new ArrayList<ParkingLocation>();
-		//ArrayList<ParkingLocation> kSpots = getKNearestNeighbors(user);
+
+		ArrayList<ParkingLocation> kSpots = getKNearestNeighbors(user, 10);
+
 		
-		//for (ParkingLocation p : kSpots){
-		//	choose top three spots using our algorithm
-		//}
+		for (int i = 0; i < 3; i++){
+			ParkingLocation choice = null;
+			for (ParkingLocation p : kSpots){
+				if (getProbability(user, p) > getProbability(user, choice)){
+					choice = p;
+				}
+			}
+			topThreeSpots.add(choice);
+		}
 		
 		return topThreeSpots; 
 	}
         
         private double getProbability(User u, ParkingLocation p) {
-            double wDistance = 1;
+            
+        	if (p == null)
+        		return 0;
+        	
+        	double wDistance = 1;
             double wSpots = 1;
             double wLikelyhood = 1;
             
@@ -94,9 +104,17 @@ public class ParkingCalculator {
 		
 		ArrayList<ParkingLocation> nearbySpots = new ArrayList<ParkingLocation>();
 		
-                
-		//calculate nearest neighbors
-		//this data could come from another team's API, e.g.
+		for (int i = 0; i < k; i++){
+			ParkingLocation nearbyLocation = new ParkingLocation(0, 0);
+			for (ParkingLocation p : locations){
+				if (calculateDistance(user.getLatitude(), user.getLongitude(), p.getLatitude(), p.getLongitude())
+						< calculateDistance(user.getLatitude(), user.getLongitude(), 
+								nearbyLocation.getLatitude(), nearbyLocation.getLongitude())){
+					nearbyLocation = p;
+				}
+			}
+			nearbySpots.add(nearbyLocation);
+		}
 		
 		return nearbySpots;
 	}
@@ -110,6 +128,10 @@ public class ParkingCalculator {
 	 * @return
 	 */
 	public static double calculateDistance(long lat1, long long1, long lat2, long long2){
+		
+		if (lat1 == 0 || lat2 == 0 || long1 == 0 || long2 == 0)
+			return Integer.MAX_VALUE;
+		
 		double dLat = Math.toRadians(lat2 - lat1);
 		double dLon = Math.toRadians(long2 - long1);
 		double rLat1 = Math.toRadians(lat1);
