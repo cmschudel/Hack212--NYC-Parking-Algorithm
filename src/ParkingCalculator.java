@@ -10,14 +10,26 @@ public class ParkingCalculator {
 		
 	}
 	
+        public void addUser(User u) {
+            
+        }
+        
+        public void removeUser(User u) {
+            
+        }
+        
+        public void setParkingLocations(ArrayList<ParkingLocation> inLocations) {
+            locations = inLocations;
+        }
+        
+        
+        
 	private void determineBestSpots(ArrayList<User> newUsers){
             //new users
             for (User u : newUsers){
                 // get k closest spots
                 ArrayList<ParkingLocation> locations = recommendSpots(u);
-		for (ParkingLocation location : locations) {
-                    
-                }
+		
                 // get best three
                 // update u
                 //push spots to the user 
@@ -68,10 +80,11 @@ public class ParkingCalculator {
         }
 
 	
-	private ArrayList<ParkingLocation> getKNearestNeighbors(User user){
+	private ArrayList<ParkingLocation> getKNearestNeighbors(User user, int k){
 		
 		ArrayList<ParkingLocation> nearbySpots = new ArrayList<ParkingLocation>();
 		
+                
 		//calculate nearest neighbors
 		//this data could come from another team's API, e.g.
 		
