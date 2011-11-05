@@ -38,9 +38,9 @@ public class ParkingCalculator {
 		ArrayList<ParkingLocation> topThreeSpots = new ArrayList<ParkingLocation>();
 		ArrayList<ParkingLocation> kSpots = getKNearestNeighbors(user);
 		
-		//for (ParkingLocation p : kSpots){
-		//	choose top three spots using our algorithm
-		//}
+		for (ParkingLocation p : kSpots){
+			
+		}
 		
 		return topThreeSpots; 
 	}
