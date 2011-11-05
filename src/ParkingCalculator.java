@@ -4,18 +4,22 @@ import java.util.Date;
 public class ParkingCalculator {
 
         ArrayList<User> existingUsers;
+        ArrayList<User> newUsers;
+        
         ArrayList<ParkingLocation> locations;
+       
         
 	public ParkingCalculator(){
 		
 	}
 	
         public void addUser(User u) {
-            
+            newUsers.add(u);
         }
         
         public void removeUser(User u) {
-            
+            // if an existing user, update the likeyhood values for for the k locations for that user
+            // remove the user for newUsers or ExistingUsers
         }
         
         public void setParkingLocations(ArrayList<ParkingLocation> inLocations) {
