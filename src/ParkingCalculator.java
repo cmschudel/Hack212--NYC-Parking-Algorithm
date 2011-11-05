@@ -13,13 +13,19 @@ public class ParkingCalculator {
 		
 	}
 	
+        //
         public void addUser(User u) {
             newUsers.add(u);
         }
         
         public void removeUser(User u) {
             // if an existing user, update the likeyhood values for for the k locations for that user
-            // remove the user for newUsers or ExistingUsers
+            if (existingUsers.contains(u)) {
+                existingUsers.remove(u);
+            }
+            if (newUsers.contains(u)) {
+                newUsers.remove(u);
+            }
         }
         
         public void setParkingLocations(ArrayList<ParkingLocation> inLocations) {
@@ -52,7 +58,7 @@ public class ParkingCalculator {
 	private ArrayList<ParkingLocation> recommendSpots(User user){
 		
 		ArrayList<ParkingLocation> topThreeSpots = new ArrayList<ParkingLocation>();
-		ArrayList<ParkingLocation> kSpots = getKNearestNeighbors(user);
+		//ArrayList<ParkingLocation> kSpots = getKNearestNeighbors(user);
 		
 		//for (ParkingLocation p : kSpots){
 		//	choose top three spots using our algorithm

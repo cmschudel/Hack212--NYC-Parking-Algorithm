@@ -88,4 +88,6 @@ public class User {
 	public long latitude;
 	public Date time;
 	public final UUID userid;
+        
+        public ArrayList<ParkingLocation> locations;
 }
