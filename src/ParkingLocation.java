@@ -6,21 +6,21 @@
  */
 public class ParkingLocation {
 
-	public ParkingLocation(long longitude, long latitude){
+	public ParkingLocation(double longitude, double latitude){
 		this.longitude = longitude;
 		this.latitude = latitude;
 		this.spotsAvailable = 0;
 		this.likelihood = 0.0;
 	}
 	
-	public ParkingLocation(long longitude, long latitude, double likelihood, int spotsAvailable){
+	public ParkingLocation(double longitude, double latitude, double likelihood, int spotsAvailable){
 		this.longitude = longitude;
 		this.latitude = latitude;
 		this.likelihood = likelihood;
 		this.spotsAvailable = spotsAvailable;
 	}
 
-	public long getLongitude() {
+	public double getLongitude() {
 		return longitude;
 	}
 
@@ -28,7 +28,7 @@ public class ParkingLocation {
 		this.longitude = longitude;
 	}
 
-	public long getLatitude() {
+	public double getLatitude() {
 		return latitude;
 	}
 
@@ -52,8 +52,8 @@ public class ParkingLocation {
 		this.likelihood = likelihood;
 	}
 	
-	private long longitude;
-	private long latitude;
+	private double longitude;
+	private double latitude;
 	private int spotsAvailable;
 	private double likelihood;
 }

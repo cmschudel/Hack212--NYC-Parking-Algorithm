@@ -15,7 +15,7 @@ public class User {
 	 * @param latitude
 	 * @param time
 	 */
-	public User(long longitude, long latitude){
+	public User(double longitude, double latitude){
 		this.longitude = longitude;
 		this.latitude = latitude;
 		
@@ -39,7 +39,7 @@ public class User {
 		userid = UUID.randomUUID();
 	}
 	
-	public long getLongitude() {
+	public double getLongitude() {
 		return longitude;
 	}
 
@@ -47,7 +47,7 @@ public class User {
 		this.longitude = longitude;
 	}
 
-	public long getLatitude() {
+	public double getLatitude() {
 		return latitude;
 	}
 
@@ -84,8 +84,8 @@ public class User {
 	}
 	
 	private ArrayList<ParkingLocation> kLocations;
-	public long longitude;
-	public long latitude;
+	public double longitude;
+	public double latitude;
 	public Date time;
 	public final UUID userid;
         

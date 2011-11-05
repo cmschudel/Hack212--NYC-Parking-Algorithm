@@ -29,7 +29,7 @@ public class ParkingCalculator {
         }
         
         public void setParkingLocations(ArrayList<ParkingLocation> inLocations) {
-            locations = inLocations;
+        	locations = inLocations;
         }
         
         
@@ -82,7 +82,6 @@ public class ParkingCalculator {
             double wSpots = 1;
             double wLikelyhood = 1;
             
-
             double distance = calculateDistance(u.getLongitude(), u.getLatitude(), p.getLongitude(), p.getLatitude());
             double spots = p.getSpotsAvailable();
             double likelyhood = p.getLikelihood();
@@ -127,7 +126,7 @@ public class ParkingCalculator {
 	 * @param long2
 	 * @return
 	 */
-	public static double calculateDistance(long lat1, long long1, long lat2, long long2){
+	public static double calculateDistance(double lat1, double long1, double lat2, double long2){
 		
 		if (lat1 == 0 || lat2 == 0 || long1 == 0 || long2 == 0)
 			return Integer.MAX_VALUE;
