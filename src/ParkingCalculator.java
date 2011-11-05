@@ -36,14 +36,15 @@ public class ParkingCalculator {
 	private ArrayList<ParkingLocation> recommendSpots(User user){
 		
 		ArrayList<ParkingLocation> topThreeSpots = new ArrayList<ParkingLocation>();
+		ArrayList<ParkingLocation> kSpots = getKNearestNeighbors(user);
 		
-		//ArrayList<ParkingLocation> kSpots = getKNearestNeighbors(user);
 		//for (ParkingLocation p : kSpots){
-		//	choose top three spots
+		//	choose top three spots using our algorithm
 		//}
 		
 		return topThreeSpots; 
 	}
+<<<<<<< HEAD
         
         private double getProbability(User u, ParkingLocation p) {
             double wDistance = 1;
@@ -66,4 +67,16 @@ public class ParkingCalculator {
         }
  
         
+=======
+	
+	private ArrayList<ParkingLocation> getKNearestNeighbors(User user){
+		
+		ArrayList<ParkingLocation> nearbySpots = new ArrayList<ParkingLocation>();
+		
+		//calculate nearest neighbors
+		//this data could come from another team's API, e.g.
+		
+		return nearbySpots;
+	}
+>>>>>>> 8fcd2e1cfba250823623e86e87817a5b5fbaab45
 }
