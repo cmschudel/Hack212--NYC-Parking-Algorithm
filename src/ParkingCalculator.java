@@ -48,17 +48,27 @@ public class ParkingCalculator {
 	private ArrayList<ParkingLocation> recommendSpots(User user){
 		
 		ArrayList<ParkingLocation> topThreeSpots = new ArrayList<ParkingLocation>();
-		ArrayList<ParkingLocation> kSpots = getKNearestNeighbors(user);
+		ArrayList<ParkingLocation> kSpots = getKNearestNeighbors(user, 10);
 		
-		for (ParkingLocation p : kSpots){
-			
+		for (int i = 0; i < 3; i++){
+			ParkingLocation choice = null;
+			for (ParkingLocation p : kSpots){
+				if (getProbability(user, p) > getProbability(user, choice)){
+					choice = p;
+				}
+			}
+			topThreeSpots.add(choice);
 		}
 		
 		return topThreeSpots; 
 	}
         
         private double getProbability(User u, ParkingLocation p) {
-            double wDistance = 1;
+            
+        	if (p == null)
+        		return 0;
+        	
+        	double wDistance = 1;
             double wSpots = 1;
             double wLikelyhood = 1;
             
