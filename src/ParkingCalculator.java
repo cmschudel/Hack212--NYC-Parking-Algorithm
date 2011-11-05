@@ -44,14 +44,13 @@ public class ParkingCalculator {
 		
 		return topThreeSpots; 
 	}
-<<<<<<< HEAD
         
         private double getProbability(User u, ParkingLocation p) {
             double wDistance = 1;
             double wSpots = 1;
             double wLikelyhood = 1;
             
-            double distance = Distance(u.getLongitude(), u.getLatitude, p.getLongitude(), p.getLatitude());
+            double distance = Distance(u.getLongitude(), u.getLatitude(), p.getLongitude(), p.getLatitude());
             double spots = p.getSpots();
             double likelyhood = p.getLikelyhood();
             double noise = Noise(new Date(), u.getLongitude(), u.getLatitude());
@@ -66,8 +65,7 @@ public class ParkingCalculator {
             return 1.0;
         }
  
-        
-=======
+       
 	
 	private ArrayList<ParkingLocation> getKNearestNeighbors(User user){
 		
@@ -78,5 +76,4 @@ public class ParkingCalculator {
 		
 		return nearbySpots;
 	}
->>>>>>> 8fcd2e1cfba250823623e86e87817a5b5fbaab45
 }
